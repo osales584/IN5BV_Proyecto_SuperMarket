@@ -2,7 +2,7 @@
 package org.oliversales.bean;
 
 public class Producto {
-    private int codigoProducto;
+    private String codigoProducto;
     private String descripcionProducto;
     private Double precioUnitario;
     private Double precioDocena;
@@ -15,7 +15,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int codigoProducto, String descripcionProducto, Double precioUnitario, Double precioDocena, Double precioMayor, String imagenProducto, int existencia, int codigoProveedor, int codigoTipoProducto) {
+    public Producto(String codigoProducto, String descripcionProducto, Double precioUnitario, Double precioDocena, Double precioMayor, String imagenProducto, int existencia, int codigoProveedor, int codigoTipoProducto) {
         this.codigoProducto = codigoProducto;
         this.descripcionProducto = descripcionProducto;
         this.precioUnitario = precioUnitario;
@@ -27,11 +27,11 @@ public class Producto {
         this.codigoTipoProducto = codigoTipoProducto;
     }
 
-    public int getCodigoProducto() {
+    public String getCodigoProducto() {
         return codigoProducto;
     }
 
-    public void setCodigoProducto(int codigoProducto) {
+    public void setCodigoProducto(String codigoProducto) {
         this.codigoProducto = codigoProducto;
     }
 
@@ -103,11 +103,4 @@ public class Producto {
     public String toString() {
         return  + getCodigoTipoProducto()+ "/" + getDescripcionProducto();
     }
-
-    
-    
-    
-    
-    
-    
 }

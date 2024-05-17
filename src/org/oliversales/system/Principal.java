@@ -15,6 +15,7 @@ import org.oliversales.controller.MenuCargoController;
 import org.oliversales.controller.MenuClientesController;
 import org.oliversales.controller.MenuComprasController;
 import org.oliversales.controller.MenuPrincipalController;
+import org.oliversales.controller.MenuProductosController;
 import org.oliversales.controller.MenuProgramadorController;
 import org.oliversales.controller.MenuProveedoresController;
 import org.oliversales.controller.MenuTipoDeProductosController;
@@ -126,6 +127,16 @@ public class Principal extends Application {
         try{
             MenuTipoDeProductosController menuTipoDeProductosView = (MenuTipoDeProductosController)cambiarEscena("MenuTipoDeProductosView.fxml", 759,428);
             menuTipoDeProductosView.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    
+    }
+    
+    public void menuProductosView(){
+        try{
+            MenuProductosController menuProductosView = (MenuProductosController)cambiarEscena("MenuProductosView.fxml", 779,431);
+            menuProductosView.setEscenarioPrincipal(this);
         }catch(Exception e){
             e.printStackTrace();
         }
