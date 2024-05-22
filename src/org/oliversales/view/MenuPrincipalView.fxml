@@ -19,13 +19,18 @@
         <menus>
           <Menu mnemonicParsing="false" text="Modulo">
             <items>
-              <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#clicProductos" text="Producto" />
+              <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#clicProductos" text="Productos" />
                   <MenuItem fx:id="btnMenuProveedores" mnemonicParsing="false" onAction="#clicProveedores" text="Provedores" />
                   <MenuItem fx:id="btnMenuClientes" mnemonicParsing="false" onAction="#clicClientes" text="Clientes" />
-                  <MenuItem mnemonicParsing="false" text="Empleados" />
+                  <MenuItem fx:id="btnMenuEmpleados" mnemonicParsing="false" onAction="#clicEmpleados" text="Empleados" />
                   <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#clicCompras" text="Compras" />
                   <MenuItem fx:id="btnMenuCargo" mnemonicParsing="false" onAction="#clicCargo" text="Cargo" />
-                  <MenuItem fx:id="btnMenuTipoDeProductos" mnemonicParsing="false" onAction="#clicTipoDeProductos" text="TipoDeProducto" />
+                  <MenuItem fx:id="btnMenuTipoDeProductos" mnemonicParsing="false" onAction="#clicTipoDeProductos" text="Tipo De Producto" />
+                  <MenuItem fx:id="btnMenuDetalleCompra" mnemonicParsing="false" onAction="#clicDetalleCompra" text="Detalle Compra" />
+                  <MenuItem fx:id="btnMenuTelefonoProveedor" mnemonicParsing="false" onAction="#clicTelefonoProveedor" text="Telefono Proveedor" />
+                  <MenuItem fx:id="btnMenuEmailProveedor" mnemonicParsing="false" onAction="#clicEmailProveedor" text="Email Proveedor" />
+                  <MenuItem fx:id="btnMenuFactura" mnemonicParsing="false" onAction="#clicFactura" text="Factura" />
+                  <MenuItem fx:id="btnMenuDetalleFactura" mnemonicParsing="false" onAction="#clicDetalleFactura" text="Detalle Factura" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Reportes">
