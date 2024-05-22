@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oliversales.controller.MenuProductosController">
+<AnchorPane id="AnchorPane" prefHeight="431.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oliversales.controller.MenuProductosController">
    <children>
-      <ImageView fitHeight="445.0" fitWidth="790.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="450.0" fitWidth="788.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/ProductoFondo.jpg" />
          </image>
@@ -104,9 +104,14 @@
             <TableColumn fx:id="colCodProv" minWidth="80.0" prefWidth="75.0" text="codigoProveedor" />
         </columns>
       </TableView>
-      <ImageView fitHeight="112.0" fitWidth="109.0" layoutX="649.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="726.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/LogoMegaMarket%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="115.0" layoutX="655.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Productos.png" />
          </image>
       </ImageView>
    </children>
