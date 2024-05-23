@@ -736,9 +736,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarTelefonoProveedor();
-call sp_AgregarTelefonoProveedor();
-call sp_AgregarTelefonoProveedor();
+call sp_AgregarTelefonoProveedor(100, '12345678', '87654321', 'Se antiende solo en horarios laborales', 1);
+call sp_AgregarTelefonoProveedor(50, '83478356', '86386743', 'Se antiende solo en horarios laborales', 2);
+call sp_AgregarTelefonoProveedor(56, '73483846', '14231223', 'Se antiende solo en horarios laborales', 1);
 -- ************************************************************Listar TelefonoProveedor****************************************************************
 Delimiter $$
 	create procedure sp_ListarTelefonoProveedor()
@@ -769,7 +769,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarTelefonoProveedor();
+call sp_BuscarTelefonoProveedor(50);
 -- ************************************************************Eliminar TelefonoProveedor****************************************************************
 Delimiter $$
 	create procedure sp_EliminarTelefonoProveedor(in codTeleProv int)
@@ -779,12 +779,12 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarTelefonoProveedor();
+call sp_EliminarTelefonoProveedor(100);
 call sp_ListarTelefonoProveedor();
 -- ************************************************************Editar TelefonoProveedor****************************************************************
 Delimiter $$
-	create procedure sp_EditarTelefonoProveedor(in codTeleProv varchar(15),in numPri decimal (10,2),
-	in numSec int, in observ varchar(15), in codProv int) 
+	create procedure sp_EditarTelefonoProveedor(in codTeleProv varchar(15),in numPri varchar(8),
+	in numSec varchar(8), in observ varchar(45), in codProv int) 
 		Begin 
 			update TelefonoProveedor TP
 				set
@@ -797,7 +797,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarTelefonoProveedor(); 
+call sp_EditarTelefonoProveedor(56, '900639', '64873412', 'Disponible en las tardes', 2);
 call sp_ListarTelefonoProveedor();
 -- ****************************************************************************************************************************************************
 
@@ -813,9 +813,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarEmailProveedor();
-call sp_AgregarEmailProveedor();
-call sp_AgregarEmailProveedor();
+call sp_AgregarEmailProveedor(5, 'supermaker@gmail.com', 'correo empresarial', 2);
+call sp_AgregarEmailProveedor(6, 'juan@gmail.com', 'correo personal', 2);
+call sp_AgregarEmailProveedor(7, 'elson@gmail.com', 'correo empresarial', 1);
 -- ************************************************************Listar EmailProveedor******************************************************************
 Delimiter $$
 	create procedure sp_ListarEmailProveedor()
@@ -844,7 +844,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarEmailProveedor();
+call sp_BuscarEmailProveedor(6);
 -- ************************************************************Eliminar EmailProveedor******************************************************************
 Delimiter $$
 	create procedure sp_EliminarEmailProveedor(in codEmProv int)
@@ -854,7 +854,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarEmailProveedor();
+call sp_EliminarEmailProveedor(6);
 call sp_ListarEmailProveedor();
 -- ************************************************************Editar EmailProveedor******************************************************************
 Delimiter $$
@@ -870,7 +870,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarEmailProveedor(); 
+call sp_EditarEmailProveedor(6, 'juan@gmail.com', 'correo personal', 2); 
 call sp_ListarEmailProveedor();
 -- *******************************************************************************************************************************************************
 

@@ -657,9 +657,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarDetalleCompra();
-call sp_AgregarDetalleCompra();
-call sp_AgregarDetalleCompra();
+call sp_AgregarDetalleCompra(12, 12.99, 5, 102, 124);
+call sp_AgregarDetalleCompra(15,10.99, 3, 120, 124);
+call sp_AgregarDetalleCompra(16,15.99, 10, 102, 824);
 -- ************************************************************Listar DetalleCompra******************************************************************
 Delimiter $$
 	create procedure sp_ListarDetalleCompra()
@@ -690,7 +690,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarDetalleCompra();
+call sp_BuscarDetalleCompra(15);
 -- ************************************************************Eliminar DetalleCompra******************************************************************
 Delimiter $$
 	create procedure sp_EliminarDetalleCompra(in codDetCom int)
@@ -700,9 +700,10 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarDetalleCompra();
+call sp_EliminarDetalleCompra(16);
 call sp_ListarDetalleCompra();
 -- ************************************************************Editar DetalleCompra*********************************************************************
+
 Delimiter $$
 	create procedure sp_EditarDetalleCompra(in codDetCom varchar(15),in cosUni decimal (10,2),
 	in cant int, in codProd varchar(15), in numDoc int) 
@@ -714,11 +715,11 @@ Delimiter $$
             DC.cantidad = cant ,
             DC.codigoProducto = codProd,
             DC.numeroDocumento = numDoc
-            where codigoProducto = prodId;
+            where codigoDetalleCompra = codDetCom;
 		End $$
 Delimiter ;
 
-call sp_EditarDetalleCompra(); 
+call sp_EditarDetalleCompra(12, 14.99, 5, 120, 824); 
 call sp_ListarDetalleCompra();
 -- *****************************************************************************************************************************************************
 
@@ -735,9 +736,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarTelefonoProveedor();
-call sp_AgregarTelefonoProveedor();
-call sp_AgregarTelefonoProveedor();
+call sp_AgregarTelefonoProveedor(100, '12345678', '87654321', 'Se antiende solo en horarios laborales', 824);
+call sp_AgregarTelefonoProveedor(50);
+call sp_AgregarTelefonoProveedor(56);
 -- ************************************************************Listar TelefonoProveedor****************************************************************
 Delimiter $$
 	create procedure sp_ListarTelefonoProveedor()
