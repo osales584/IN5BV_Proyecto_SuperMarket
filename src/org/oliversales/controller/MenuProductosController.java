@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import org.oliversales.bean.Producto;
 import org.oliversales.bean.Proveedores;
 import org.oliversales.bean.TipoDeProducto;
@@ -60,6 +61,12 @@ public class MenuProductosController implements Initializable {
     @FXML private Button btnEditar;
     @FXML private Button btnReporte;
     
+    //Imagenes
+    @FXML private ImageView imgAgregar;
+    @FXML private ImageView imgEliminar;
+    @FXML private ImageView imgEditar;
+    @FXML private ImageView imgReporte;
+    
 // -----------------------------------------------------------------------------
     @Override
     public void initialize(URL url, ResourceBundle resources) {
@@ -89,6 +96,8 @@ public class MenuProductosController implements Initializable {
        txtPrecioM.setText(String.valueOf(((Producto)tblProductos.getSelectionModel().getSelectedItem()).getPrecioMayor()));
        txtExistencia.setText(String.valueOf(((Producto)tblProductos.getSelectionModel().getSelectedItem()).getExistencia()));
        cmbCodigoTipoP.getSelectionModel().select(buscarTipoProducto(((Producto)tblProductos.getSelectionModel().getSelectedItem()).getCodigoTipoProducto()));
+       cmbCodProv.getSelectionModel().select(buscarProveedores(((Producto)tblProductos.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
+
     }    
     
 // -----------------------------------------------------------------------------
@@ -101,6 +110,33 @@ public class MenuProductosController implements Initializable {
          while (registro.next()){
              resultado = new TipoDeProducto(registro.getInt("codigoTipoProducto"),
                                             registro.getString("descripcionProducto")
+             
+             );
+         }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }    
+    
+        return resultado;
+    }
+    
+// -----------------------------------------------------------------------------    
+    public Proveedores buscarProveedores (int codigoProveedor ){
+        Proveedores resultado = null;
+        try{
+         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarProveedores(?)}");
+         procedimiento.setInt(1, codigoProveedor);
+         ResultSet registro = procedimiento.executeQuery();
+         while (registro.next()){
+             resultado = new Proveedores (registro.getInt("codigoProveedor"),
+                                            registro.getString("NITProveedor"),
+                                            registro.getString("nombreProveedor"),
+                                            registro.getString("apellidoProveedor"),
+                                            registro.getString("direccionProveedor"),
+                                            registro.getString("razonSocial"),
+                                            registro.getString("contactoPrincipal"),
+                                            registro.getString("paginaWeb")
              
              );
          }
@@ -206,10 +242,8 @@ public class MenuProductosController implements Initializable {
      public void guardar (){
          Producto registro = new Producto();
          registro.setCodigoProducto(txtCodigoProd.getText());
-         registro.setCodigoProveedor(((Proveedores)cmbCodProv.getSelectionModel().getSelectedItem()
-                 ).getCodigoProveedor());
-         registro.setCodigoTipoProducto(((TipoDeProducto)cmbCodigoTipoP.getSelectionModel().getSelectedItem())
-                 .getCodigoTipoProducto());
+         registro.setCodigoProveedor(((Proveedores)cmbCodProv.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+         registro.setCodigoTipoProducto(((TipoDeProducto)cmbCodigoTipoP.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
          registro.setDescripcionProducto(txtDescProd.getText());
          registro.setPrecioDocena(Double.parseDouble(txtPrecioD.getText()));
          registro.setPrecioUnitario(Double.parseDouble(txtPrecioU.getText()));

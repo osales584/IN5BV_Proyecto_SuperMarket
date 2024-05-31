@@ -887,9 +887,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarEmpleados();
-call sp_AgregarEmpleados();
-call sp_AgregarEmpleados();
+call sp_AgregarEmpleados(12, 'Alejandro', 'Torres' , 999.99, 'zona 8' , 'am' , 200324 );
+call sp_AgregarEmpleados(10, 'Andres', 'Lomas' , 1499.99, 'zona 8' , 'am' , 200324 );
+call sp_AgregarEmpleados(5, 'Steven', 'Ronney' , 1999.99, 'zona 8' , 'am' , 250124 );
 -- ************************************************************Listar Empleados******************************************************************
 Delimiter $$
 	create procedure sp_ListarEmpleados()
@@ -924,7 +924,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarEmpleados();
+call sp_BuscarEmpleados(10);
 -- ************************************************************Eliminar Empleados******************************************************************
 Delimiter $$
 	create procedure sp_EliminarEmpleados(in codEmp int)
@@ -934,7 +934,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarEmpleados();
+call sp_EliminarEmpleados(10);
 call sp_ListarEmpleados();
 -- ************************************************************Editar Empleados******************************************************************
 Delimiter $$
@@ -954,7 +954,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarEmpleados(); 
+call sp_EditarEmpleados(5, 'Josue', 'Xiloj' , 1999.99, 'zona 14' , 'pm' , 250124 ); 
 call sp_ListarEmpleados();
 -- ************************************************************************************************************************************************
 
@@ -971,9 +971,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarFactura();
-call sp_AgregarFactura();
-call sp_AgregarFactura();
+call sp_AgregarFactura(1, 'pendiente', 999.99, '2024-02-27' ,1 , 5);
+call sp_AgregarFactura(2, 'pendiente', 999.99, '2024-03-31' ,8 , 5);
+call sp_AgregarFactura(3, 'pendiente', 999.99, '2024-03-26' ,8 , 12);
 -- ************************************************************Listar Factura******************************************************************
 Delimiter $$
 	create procedure sp_ListarFactura()
@@ -1006,7 +1006,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarFactura();
+call sp_BuscarFactura(3);
 -- ************************************************************Eliminar Factura******************************************************************
 Delimiter $$
 	create procedure sp_EliminarFactura(in numFact int)
@@ -1016,7 +1016,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarFactura();
+call sp_EliminarFactura(2);
 call sp_ListarFactura();
 -- ************************************************************Editar Factura******************************************************************
 Delimiter $$
@@ -1035,22 +1035,11 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarFactura(); 
+call sp_EditarFactura(3, 'pagado', 1499.99, '2024-03-26' ,8 , 12); 
 call sp_ListarFactura();
 -- ********************************************************************************************************************************************
 
-create table DetalleFactura (
-	codigoDetalleFactura int not null,
-    precioUnitario decimal (10,2) not null,
-    cantidad int not null,
-	numeroFactura int not null,
-	codigoProducto varchar(15) not null,
-	primary key PK_codigoDetalleFactura (codigoDetalleFactura),
-	constraint FK_Factura_DetalleFactura foreign key (numeroFactura)
-	references Factura (numeroFactura),
-	constraint FK_Productos_DetalleFactura foreign key (codigoProducto)
-	references Productos (codigoProducto)
-);
+
 -- ///////////////////////////////////////////////////////////////DetalleFactura///////////////////////////////////////////////////////////////////////
 -- ************************************************************Agregar DetalleFactura******************************************************************
 Delimiter $$
@@ -1060,10 +1049,10 @@ Delimiter $$
             (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto);
 		End $$
 Delimiter ;
-
-call sp_AgregarDetalleFactura();
-call sp_AgregarDetalleFactura();
-call sp_AgregarDetalleFactura();
+-- drop procedure sp_AgregarDetalleFactura;
+call sp_AgregarDetalleFactura(100 , 20.99, 5, 1 , '120');
+call sp_AgregarDetalleFactura(101, 25.99, 3, 3 , '102');
+call sp_AgregarDetalleFactura(102, 30.99, 6, 1 , '120');
 -- ************************************************************Listar DetalleFactura******************************************************************
 Delimiter $$
 	create procedure sp_ListarDetalleFactura()

@@ -13,7 +13,7 @@ public class Conexion {
     public Conexion(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBKinalSuperMaker?useSSL=false", "2020584_IN5BV", "123");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBKinalSuperMaker?useSSL=false", "2020584_IN5BV", "abc123!!");
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }catch (InstantiationException e){
