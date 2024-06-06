@@ -68,7 +68,7 @@ public class MenuComprasController implements Initializable {
         colnumeroDoc.setCellValueFactory(new PropertyValueFactory<Compras, Integer>("numeroDocumento"));
         colFechaDoc.setCellValueFactory(new PropertyValueFactory<Compras, String>("fechaDocumento"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<Compras, String>("descripcion"));
-        colTotalDoc.setCellValueFactory(new PropertyValueFactory<Compras,Boolean>("totalDocumento"));
+        colTotalDoc.setCellValueFactory(new PropertyValueFactory<Compras,Double>("totalDocumento"));
     }
     
 // -----------------------------------------------------------------------------    
@@ -91,7 +91,7 @@ public class MenuComprasController implements Initializable {
                 Lista.add(new Compras (resultado.getInt("numeroDocumento"),
                                        resultado.getString("fechaDocumento"),
                                        resultado.getString("descripcion"),
-                                       resultado.getBoolean("totalDocumento")
+                                       resultado.getDouble("totalDocumento")
                 ));
             }
             
@@ -138,13 +138,13 @@ public class MenuComprasController implements Initializable {
         registro.setNumeroDocumento(Integer.parseInt(txtNumeroDoc.getText()));
         registro.setFechaDocumento(txtFechaDoc.getText());
         registro.setDescripcion(txtDescripcion.getText());
-        registro.setTotalDocumento(Boolean.parseBoolean(txtNumeroDoc.getText()));
+        registro.setTotalDocumento(Double.parseDouble(txtNumeroDoc.getText()));
         try{
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarCompras(?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getNumeroDocumento());
             procedimiento.setString(2, registro.getFechaDocumento());
             procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setBoolean(4, registro.isTotalDocumento());
+            procedimiento.setDouble(4, registro.isTotalDocumento());
             procedimiento.execute();
             listaCompras.add(registro);
         }catch (Exception e){
@@ -230,11 +230,11 @@ public class MenuComprasController implements Initializable {
             Compras registro = (Compras)tblCompras.getSelectionModel().getSelectedItem();
             registro.setFechaDocumento(txtFechaDoc.getText());
             registro.setDescripcion(txtDescripcion.getText());
-            registro.setTotalDocumento(Boolean.parseBoolean(txtNumeroDoc.getText()));
+            registro.setTotalDocumento(Double.parseDouble(txtNumeroDoc.getText()));
             procedimiento.setInt(1, registro.getNumeroDocumento());
             procedimiento.setString(2, registro.getFechaDocumento());
             procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setBoolean(4, registro.isTotalDocumento());
+            procedimiento.setDouble(4, registro.isTotalDocumento());
             procedimiento.execute();
 
         }catch (Exception e){

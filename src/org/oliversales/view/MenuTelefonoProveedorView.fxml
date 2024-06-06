@@ -68,7 +68,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" stylesheets="@../resource/KinalExpresCSS.css" text="Agregar">
+            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" stylesheets="@../resource/KinalExpresCSS.css" text="Agregar">
                <styleClass>
                   <String fx:value="button2" />
                   <String fx:value="button3" />
@@ -79,12 +79,12 @@
                   <String fx:value="button2" />
                   <String fx:value="button3" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="111.0" stylesheets="@../resource/KinalExpresCSS.css" text="Editar" GridPane.rowIndex="2">
+            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="38.0" prefWidth="111.0" stylesheets="@../resource/KinalExpresCSS.css" text="Editar" GridPane.rowIndex="2">
                <styleClass>
                   <String fx:value="button2" />
                   <String fx:value="button3" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" stylesheets="@../resource/KinalExpresCSS.css" text="Reporte" GridPane.rowIndex="3">
+            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" stylesheets="@../resource/KinalExpresCSS.css" text="Reporte" GridPane.rowIndex="3">
                <styleClass>
                   <String fx:value="button2" />
                   <String fx:value="button3" />

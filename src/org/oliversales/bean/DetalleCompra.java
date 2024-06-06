@@ -58,5 +58,8 @@ public class DetalleCompra {
         this.numeroDocumento = numeroDocumento;
     }
     
-    
+    @Override
+    public String toString() {
+        return  + getNumeroDocumento()+ "/" + getCantidad();
+    }
 }

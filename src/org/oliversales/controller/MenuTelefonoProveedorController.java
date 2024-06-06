@@ -54,7 +54,8 @@ public class MenuTelefonoProveedorController implements Initializable {
     
     @FXML private Button btnAgregar;
     @FXML private Button btnEliminar;
-    @FXML private Button btnEditar;    
+    @FXML private Button btnEditar; 
+    @FXML private Button btnReporte;
     @FXML private Button btnRegresar;
     
     //Imagenes
@@ -72,11 +73,11 @@ public class MenuTelefonoProveedorController implements Initializable {
     
     public void cargarDatos(){
         tblTelefonoProveedor.setItems(getTelefonoProveedor());
-        colCodTeleProv.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("codigoTelefonoProveedor"));
+        colCodTeleProv.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, Integer>("codigoTelefonoProveedor"));
         colNumPrin.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("numeroPrincipal"));
         colNumSec.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("numeroSecundario"));
         colObservaciones.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("observaciones"));
-        colCodProv.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("codigoProveedor"));
+        colCodProv.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, Integer>("codigoProveedor"));
     }
     
 // -----------------------------------------------------------------------------    

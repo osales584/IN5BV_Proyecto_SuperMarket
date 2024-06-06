@@ -78,13 +78,13 @@
             </ImageView>
          </children>
       </GridPane>
-      <TableView layoutX="14.0" layoutY="151.0" prefHeight="190.0" prefWidth="526.0" stylesheets="@../resource/KinalExpresCSS.css">
+      <TableView fx:id="tblDetalleCompra" layoutX="14.0" layoutY="151.0" onMouseClicked="#selecionarElementos" prefHeight="190.0" prefWidth="526.0" stylesheets="@../resource/KinalExpresCSS.css">
         <columns>
-          <TableColumn minWidth="105.0" prefWidth="75.0" text="codigoDetalleCompra" />
-          <TableColumn minWidth="105.0" prefWidth="75.0" text="costoUnitario" />
-            <TableColumn minWidth="105.0" prefWidth="75.0" text="cantidad" />
-            <TableColumn minWidth="105.0" prefWidth="75.0" text="codigoProducto" />
-            <TableColumn minWidth="105.0" prefWidth="75.0" text="numeroDocumento" />
+          <TableColumn fx:id="colDetalleComp" minWidth="105.0" prefWidth="75.0" text="codigoDetalleCompra" />
+          <TableColumn fx:id="colCostoU" minWidth="105.0" prefWidth="75.0" text="costoUnitario" />
+            <TableColumn fx:id="colCantidad" minWidth="105.0" prefWidth="75.0" text="cantidad" />
+            <TableColumn fx:id="colCodProd" minWidth="105.0" prefWidth="75.0" text="codigoProducto" />
+            <TableColumn fx:id="colNumeroDoc" minWidth="105.0" prefWidth="75.0" text="numeroDocumento" />
         </columns>
       </TableView>
       <GridPane layoutX="14.0" layoutY="30.0" prefHeight="95.0" prefWidth="549.0">
@@ -100,16 +100,16 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCodDetalleComp" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCantidad" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Label text="codigoDetalleCompra" />
             <Label text="costoUnitario" GridPane.rowIndex="1" />
             <Label text="cantidad" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label text="codigoProducto" GridPane.rowIndex="2" />
             <Label text="numeroDocumento" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox prefHeight="25.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox prefWidth="171.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCostoU" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbCodProd" prefHeight="25.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbNumeroDoc" prefWidth="171.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <ImageView fitHeight="77.0" fitWidth="86.0" layoutX="316.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">

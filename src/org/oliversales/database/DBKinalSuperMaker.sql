@@ -1045,10 +1045,11 @@ call sp_ListarFactura();
 Delimiter $$
 	create procedure sp_AgregarDetalleFactura(in codigoDetalleFactura int, in precioUnitario decimal (10,2),in cantidad int, in numeroFactura int ,in codigoProducto varchar(15)) 
 		Begin 
-			Insert into Factura (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto) values 
+			Insert into DetalleFactura (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto) values 
             (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto);
 		End $$
 Delimiter ;
+-- drop procedure sp_AgregarDetalleFactura;
 -- drop procedure sp_AgregarDetalleFactura;
 call sp_AgregarDetalleFactura(100 , 20.99, 5, 1 , '120');
 call sp_AgregarDetalleFactura(101, 25.99, 3, 3 , '102');
@@ -1083,7 +1084,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarDetalleFactura();
+call sp_BuscarDetalleFactura(100);
 -- ************************************************************Eliminar DetalleFactura******************************************************************
 Delimiter $$
 	create procedure sp_EliminarDetalleFactura(in codDetFac int)
@@ -1093,7 +1094,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarDetalleFactura();
+call sp_EliminarDetalleFactura(102);
 call sp_ListarDetalleFactura();
 -- ************************************************************Editar DetalleFactura******************************************************************
 Delimiter $$
@@ -1110,6 +1111,84 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarDetalleFactura(); 
+call sp_EditarDetalleFactura(101, 27.99, 5, 3 , '102'); 
 call sp_ListarDetalleFactura();
 -- *************************************************************************************************************************************************
+
+
+-- *********************************************Triger_After_ Insert de DetalleFactura con nombre PrecioProductos******************************************** 
+delimiter $$
+create trigger tr_PrecioProductos_After_Insert
+after insert on DetalleCompra
+for each row 
+begin
+	declare total decimal(10,2);
+    declare cantidad int;
+    
+    set total = new.costoUnitario * new.cantidad;
+
+	update Productos
+	set precioUnitario = total * 0.40,
+		precioDocena  = total * 0.35 * 12,
+        precioMayor = total * 0.25
+    where Productos.codigoProducto = new.codigoProducto;
+    
+	update Productos
+        set Productos.existencia = Productos.existencia - new.cantidad
+	where Productos.codigoProducto = new.codigoProducto;
+
+end $$
+delimiter ;
+
+-- *********************************************Triger_After_ Insert de DetalleFactura con nombre TotalDocumento******************************************** 
+delimiter $$
+create trigger tr_TotalDocumento_After_Insert
+after insert on DetalleCompra
+for each row
+begin
+    declare total decimal(10,2);
+    
+    select sum(costoUnitario * cantidad) into total from DetalleCompra 
+    where numeroDocumento = NEW.numeroDocumento;
+    
+    update Compras 
+		set totalDocumento = total 
+	where numeroDocumento = NEW.numeroDocumento;
+end $$
+delimiter ;
+
+-- *********************************************Triger_After_ Insert de DetalleFactura con nombre PrecioUnitario******************************************** 
+delimiter $$
+create trigger tr_PrecioUnitario_After_Upd
+after insert on DetalleCompra
+for each row
+begin
+
+	declare precio decimal(10,2);
+    
+    set precio = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
+    
+    update DetalleFactura
+    set DetalleFactura.precioUnitario = precioP
+    where DetalleFactura.codigoProducto = NEW.codigoProducto;
+end $$
+delimiter ;
+
+-- *****************************************Triger_After_ Update de DetalleFactura con nombre TotalFactura******************************************************** 
+delimiter $$
+create trigger tr_TotalFactura_Aftr_U
+after update on DetalleFactura
+for each row
+begin
+	declare totalFactura decimal(10,2);
+    
+    select sum(precioUnitario * cantidad) into totalFactura from DetalleFactura
+    where numeroFactura = new.numeroFactura;
+    
+    update Factura
+		set Factura.totalFactura = totalFactura
+	where Factura.numeroFactura = new.numeroFactura;
+end $$
+delimiter ;
+
+

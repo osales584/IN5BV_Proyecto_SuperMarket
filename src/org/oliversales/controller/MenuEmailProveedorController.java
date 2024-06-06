@@ -53,6 +53,7 @@ public class MenuEmailProveedorController implements Initializable {
     @FXML private Button btnAgregar;
     @FXML private Button btnEliminar;
     @FXML private Button btnEditar; 
+    @FXML private Button btnReporte; 
     @FXML private Button btnRegresar;
     
     //Imagenes

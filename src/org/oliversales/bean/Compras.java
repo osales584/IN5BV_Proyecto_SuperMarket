@@ -4,12 +4,12 @@ public class Compras {
     private int numeroDocumento;
     private String fechaDocumento;
     private String descripcion;
-    private boolean totalDocumento;
+    private double totalDocumento;
 
     public Compras() {
     }
 
-    public Compras(int numeroDocumento, String fechaDocumento, String descripcion, boolean totalDocumento) {
+    public Compras(int numeroDocumento, String fechaDocumento, String descripcion, double totalDocumento) {
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento;
         this.descripcion = descripcion;
@@ -40,13 +40,16 @@ public class Compras {
         this.descripcion = descripcion;
     }
 
-    public boolean isTotalDocumento() {
+    public double isTotalDocumento() {
         return totalDocumento;
     }
 
-    public void setTotalDocumento(boolean totalDocumento) {
+    public void setTotalDocumento(double totalDocumento) {
         this.totalDocumento = totalDocumento;
     }
     
-    
+    @Override
+    public String toString() {
+        return getNumeroDocumento()+ " | " + isTotalDocumento();
+    }    
 }
