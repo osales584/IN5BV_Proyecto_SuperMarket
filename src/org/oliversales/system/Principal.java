@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.oliversales.controller.MenuCargoController;
@@ -44,6 +45,7 @@ public class Principal extends Application {
     public void start(Stage escenarioPrincipal) throws IOException {
        this.escenarioPrincipal = escenarioPrincipal;
        this.escenarioPrincipal.setTitle("MEGAMARKET");
+       escenarioPrincipal.getIcons().add(new Image("/org/oliversales/images/LogoMegaMarket (1).png"));
        menuPrincipalView();
       //Parent root = FXMLLoader.load(getClass().getResource("/org/luishernandez/view/MenuPrincipalView.fxml"));
       // Scene escena = new Scene(root);

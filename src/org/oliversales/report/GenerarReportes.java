@@ -15,7 +15,7 @@ public class GenerarReportes {
         InputStream  reporte = GenerarReportes.class.getResourceAsStream(nombreReporte);
         try{
             JasperReport reporteMaestro = (JasperReport)JRLoader.loadObject(reporte);
-            JasperPrint reporteImpreso = JasperFillManager.fillReport(nombreReporte, parametro, Conexion.getInstance().getConexion());
+            JasperPrint reporteImpreso = JasperFillManager.fillReport(reporteMaestro, parametro, Conexion.getInstance().getConexion());
             JasperViewer visor = new JasperViewer(reporteImpreso, false);
             visor.setTitle(titulo);
             visor.setVisible(true);

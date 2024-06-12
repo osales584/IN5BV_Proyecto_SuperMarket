@@ -43,10 +43,10 @@ public class MenuClientesController implements Initializable{
     
     // Cuadro de texto
     @FXML private TextField txtCodigoC;
-    @FXML private TextField txtNit;
     @FXML private TextField txtNombreC;
-    @FXML private TextField txtTelefonoC;
     @FXML private TextField txtApellidoC;
+    @FXML private TextField txtNit;
+    @FXML private TextField txtTelefonoC;
     @FXML private TextField txtDireccionC;
     @FXML private TextField txtCorreoC;
     
@@ -210,7 +210,7 @@ public class MenuClientesController implements Initializable{
                             e.printStackTrace();
                         }
                     }
-                    limpiarControles();
+                    
                 }else 
                     JOptionPane.showMessageDialog(null,"De ve selccionar un elemento");
         }

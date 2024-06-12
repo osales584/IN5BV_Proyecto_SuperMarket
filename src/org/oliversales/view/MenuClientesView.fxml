@@ -139,11 +139,11 @@
       <TableView fx:id="tblClientes" layoutX="238.0" layoutY="16.0" onMouseClicked="#seleccionarElemento" prefHeight="190.0" prefWidth="555.0" stylesheets="@../resource/KinalExpresCSS.css">
         <columns>
           <TableColumn fx:id="colCodigoC" prefWidth="79.0" text="codigoCliente" />
-          <TableColumn fx:id="colNit" prefWidth="79.0" text="NITCliente" />
-            <TableColumn fx:id="colNombreC" prefWidth="79.0" text="nombreCliente" />
+          <TableColumn fx:id="colNombreC" prefWidth="79.0" text="nombreCliente" />
             <TableColumn fx:id="colApellidoC" prefWidth="79.0" text="apellidoCliente" />
-            <TableColumn fx:id="colDireccionC" prefWidth="79.0" text="direccionCliente" />
+            <TableColumn fx:id="colNit" prefWidth="79.0" text="NITCliente" />
             <TableColumn fx:id="colTelefonoC" prefWidth="79.0" text="telefonoCliente" />
+            <TableColumn fx:id="colDireccionC" prefWidth="79.0" text="direccionCliente" />
             <TableColumn fx:id="colCorreoC" prefWidth="79.0" text="correoCliente" />
         </columns>
       </TableView>

@@ -57,17 +57,6 @@
                   <String fx:value="button3" />
                </styleClass>
             </Button>
-            <GridPane>
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
             <ImageView fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                <image>
                   <Image url="@../images/Reportes.png" />
@@ -103,13 +92,13 @@
         </rowConstraints>
          <children>
             <Label text="codigoEmailProveedor" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="txtCodEmProv" GridPane.columnIndex="1" />
             <Label text="emailProveedor" GridPane.columnIndex="2" />
             <Label text="descripcion" GridPane.rowIndex="1" />
             <Label text="codigoProveedor" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="3" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="txtDescripcion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtEmProv" GridPane.columnIndex="3" />
+            <ComboBox fx:id="cmbCodProv" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <ImageView fitHeight="103.0" fitWidth="97.0" layoutX="584.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
@@ -117,12 +106,12 @@
             <Image url="@../images/LogoMegaMarket%20(1).png" />
          </image>
       </ImageView>
-      <TableView layoutX="14.0" layoutY="63.0" prefHeight="200.0" prefWidth="553.0" stylesheets="@../resource/KinalExpresCSS.css">
+      <TableView fx:id="tblEmailProveedor" layoutX="14.0" layoutY="63.0" onMouseClicked="#selecionarElementos" prefHeight="200.0" prefWidth="553.0" stylesheets="@../resource/KinalExpresCSS.css">
         <columns>
-          <TableColumn minWidth="137.0" prefWidth="75.0" text="codigoEmailProveedor" />
-          <TableColumn minWidth="137.0" prefWidth="75.0" text="emailProveedor" />
-            <TableColumn minWidth="137.0" prefWidth="75.0" text="descripcion" />
-            <TableColumn minWidth="137.0" prefWidth="75.0" text="codigoProveedor" />
+          <TableColumn fx:id="colCodEmProv" minWidth="137.0" prefWidth="75.0" text="codigoEmailProveedor" />
+          <TableColumn fx:id="colEmProv" minWidth="137.0" prefWidth="75.0" text="emailProveedor" />
+            <TableColumn fx:id="colDescripcion" minWidth="137.0" prefWidth="75.0" text="descripcion" />
+            <TableColumn fx:id="colCodProv" minWidth="137.0" prefWidth="75.0" text="codigoProveedor" />
         </columns>
       </TableView>
       <ImageView fitHeight="91.0" fitWidth="97.0" layoutX="587.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">

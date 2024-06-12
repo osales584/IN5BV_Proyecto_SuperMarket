@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.oliversales.bean.Proveedores;
 import org.oliversales.db.Conexion;
+import org.oliversales.report.GenerarReportes;
 import org.oliversales.system.Principal;
 
 public class MenuProveedoresController implements Initializable {
@@ -280,6 +283,9 @@ public class MenuProveedoresController implements Initializable {
 // Reporte    
     public void reporte(){
         switch (tipoDeOperaciones){
+            case NINGUNO:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -292,6 +298,12 @@ public class MenuProveedoresController implements Initializable {
                 tipoDeOperaciones = operaciones.NINGUNO;
                         
         }
+    }
+    
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("codigoProveedor", null);
+        GenerarReportes.mostrarReportes("ReporteProveedores.jasper", "Reporte de los proveedores", parametros);
     }
     
 // -----------------------------------------------------------------------------    

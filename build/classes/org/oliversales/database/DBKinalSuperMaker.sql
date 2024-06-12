@@ -736,9 +736,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarTelefonoProveedor(100, '12345678', '87654321', 'Se antiende solo en horarios laborales', 824);
-call sp_AgregarTelefonoProveedor(50);
-call sp_AgregarTelefonoProveedor(56);
+call sp_AgregarTelefonoProveedor(100, '12345678', '87654321', 'Se antiende solo en horarios laborales', 1);
+call sp_AgregarTelefonoProveedor(50, '83478356', '86386743', 'Se antiende solo en horarios laborales', 2);
+call sp_AgregarTelefonoProveedor(56, '73483846', '14231223', 'Se antiende solo en horarios laborales', 1);
 -- ************************************************************Listar TelefonoProveedor****************************************************************
 Delimiter $$
 	create procedure sp_ListarTelefonoProveedor()
@@ -769,7 +769,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarTelefonoProveedor();
+call sp_BuscarTelefonoProveedor(50);
 -- ************************************************************Eliminar TelefonoProveedor****************************************************************
 Delimiter $$
 	create procedure sp_EliminarTelefonoProveedor(in codTeleProv int)
@@ -779,12 +779,12 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarTelefonoProveedor();
+call sp_EliminarTelefonoProveedor(100);
 call sp_ListarTelefonoProveedor();
 -- ************************************************************Editar TelefonoProveedor****************************************************************
 Delimiter $$
-	create procedure sp_EditarTelefonoProveedor(in codTeleProv varchar(15),in numPri decimal (10,2),
-	in numSec int, in observ varchar(15), in codProv int) 
+	create procedure sp_EditarTelefonoProveedor(in codTeleProv varchar(15),in numPri varchar(8),
+	in numSec varchar(8), in observ varchar(45), in codProv int) 
 		Begin 
 			update TelefonoProveedor TP
 				set
@@ -797,7 +797,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarTelefonoProveedor(); 
+call sp_EditarTelefonoProveedor(56, '900639', '64873412', 'Disponible en las tardes', 2);
 call sp_ListarTelefonoProveedor();
 -- ****************************************************************************************************************************************************
 
@@ -813,9 +813,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarEmailProveedor();
-call sp_AgregarEmailProveedor();
-call sp_AgregarEmailProveedor();
+call sp_AgregarEmailProveedor(5, 'supermaker@gmail.com', 'correo empresarial', 2);
+call sp_AgregarEmailProveedor(6, 'juan@gmail.com', 'correo personal', 2);
+call sp_AgregarEmailProveedor(7, 'elson@gmail.com', 'correo empresarial', 1);
 -- ************************************************************Listar EmailProveedor******************************************************************
 Delimiter $$
 	create procedure sp_ListarEmailProveedor()
@@ -844,7 +844,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarEmailProveedor();
+call sp_BuscarEmailProveedor(6);
 -- ************************************************************Eliminar EmailProveedor******************************************************************
 Delimiter $$
 	create procedure sp_EliminarEmailProveedor(in codEmProv int)
@@ -854,7 +854,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarEmailProveedor();
+call sp_EliminarEmailProveedor(6);
 call sp_ListarEmailProveedor();
 -- ************************************************************Editar EmailProveedor******************************************************************
 Delimiter $$
@@ -870,7 +870,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarEmailProveedor(); 
+call sp_EditarEmailProveedor(6, 'juan@gmail.com', 'correo personal', 2); 
 call sp_ListarEmailProveedor();
 -- *******************************************************************************************************************************************************
 
@@ -887,9 +887,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarEmpleados();
-call sp_AgregarEmpleados();
-call sp_AgregarEmpleados();
+call sp_AgregarEmpleados(12, 'Alejandro', 'Torres' , 999.99, 'zona 8' , 'am' , 200324 );
+call sp_AgregarEmpleados(10, 'Andres', 'Lomas' , 1499.99, 'zona 8' , 'am' , 200324 );
+call sp_AgregarEmpleados(5, 'Steven', 'Ronney' , 1999.99, 'zona 8' , 'am' , 250124 );
 -- ************************************************************Listar Empleados******************************************************************
 Delimiter $$
 	create procedure sp_ListarEmpleados()
@@ -924,7 +924,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarEmpleados();
+call sp_BuscarEmpleados(10);
 -- ************************************************************Eliminar Empleados******************************************************************
 Delimiter $$
 	create procedure sp_EliminarEmpleados(in codEmp int)
@@ -934,7 +934,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarEmpleados();
+call sp_EliminarEmpleados(10);
 call sp_ListarEmpleados();
 -- ************************************************************Editar Empleados******************************************************************
 Delimiter $$
@@ -954,7 +954,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarEmpleados(); 
+call sp_EditarEmpleados(5, 'Josue', 'Xiloj' , 1999.99, 'zona 14' , 'pm' , 250124 ); 
 call sp_ListarEmpleados();
 -- ************************************************************************************************************************************************
 
@@ -971,9 +971,9 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_AgregarFactura();
-call sp_AgregarFactura();
-call sp_AgregarFactura();
+call sp_AgregarFactura(1, 'pendiente', 999.99, '2024-02-27' ,1 , 5);
+call sp_AgregarFactura(2, 'pendiente', 999.99, '2024-03-31' ,8 , 5);
+call sp_AgregarFactura(3, 'pendiente', 999.99, '2024-03-26' ,8 , 12);
 -- ************************************************************Listar Factura******************************************************************
 Delimiter $$
 	create procedure sp_ListarFactura()
@@ -1006,7 +1006,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarFactura();
+call sp_BuscarFactura(3);
 -- ************************************************************Eliminar Factura******************************************************************
 Delimiter $$
 	create procedure sp_EliminarFactura(in numFact int)
@@ -1016,7 +1016,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarFactura();
+call sp_EliminarFactura(2);
 call sp_ListarFactura();
 -- ************************************************************Editar Factura******************************************************************
 Delimiter $$
@@ -1035,35 +1035,25 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarFactura(); 
+call sp_EditarFactura(3, 'pagado', 1499.99, '2024-03-26' ,8 , 12); 
 call sp_ListarFactura();
 -- ********************************************************************************************************************************************
 
-create table DetalleFactura (
-	codigoDetalleFactura int not null,
-    precioUnitario decimal (10,2) not null,
-    cantidad int not null,
-	numeroFactura int not null,
-	codigoProducto varchar(15) not null,
-	primary key PK_codigoDetalleFactura (codigoDetalleFactura),
-	constraint FK_Factura_DetalleFactura foreign key (numeroFactura)
-	references Factura (numeroFactura),
-	constraint FK_Productos_DetalleFactura foreign key (codigoProducto)
-	references Productos (codigoProducto)
-);
+
 -- ///////////////////////////////////////////////////////////////DetalleFactura///////////////////////////////////////////////////////////////////////
 -- ************************************************************Agregar DetalleFactura******************************************************************
 Delimiter $$
 	create procedure sp_AgregarDetalleFactura(in codigoDetalleFactura int, in precioUnitario decimal (10,2),in cantidad int, in numeroFactura int ,in codigoProducto varchar(15)) 
 		Begin 
-			Insert into Factura (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto) values 
+			Insert into DetalleFactura (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto) values 
             (codigoDetalleFactura,precioUnitario, cantidad, numeroFactura, codigoProducto);
 		End $$
 Delimiter ;
-
-call sp_AgregarDetalleFactura();
-call sp_AgregarDetalleFactura();
-call sp_AgregarDetalleFactura();
+-- drop procedure sp_AgregarDetalleFactura;
+-- drop procedure sp_AgregarDetalleFactura;
+call sp_AgregarDetalleFactura(100 , 20.99, 5, 1 , '120');
+call sp_AgregarDetalleFactura(101, 25.99, 3, 3 , '102');
+call sp_AgregarDetalleFactura(102, 30.99, 6, 1 , '120');
 -- ************************************************************Listar DetalleFactura******************************************************************
 Delimiter $$
 	create procedure sp_ListarDetalleFactura()
@@ -1094,7 +1084,7 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_BuscarDetalleFactura();
+call sp_BuscarDetalleFactura(100);
 -- ************************************************************Eliminar DetalleFactura******************************************************************
 Delimiter $$
 	create procedure sp_EliminarDetalleFactura(in codDetFac int)
@@ -1104,7 +1094,7 @@ Delimiter $$
         End $$
 Delimiter ;
 
-call sp_EliminarDetalleFactura();
+call sp_EliminarDetalleFactura(102);
 call sp_ListarDetalleFactura();
 -- ************************************************************Editar DetalleFactura******************************************************************
 Delimiter $$
@@ -1121,6 +1111,85 @@ Delimiter $$
 		End $$
 Delimiter ;
 
-call sp_EditarDetalleFactura(); 
+call sp_EditarDetalleFactura(101, 27.99, 5, 3 , '102'); 
 call sp_ListarDetalleFactura();
 -- *************************************************************************************************************************************************
+
+
+-- *********************************************Triger_After_ Insert de DetalleFactura con nombre PrecioProductos******************************************** 
+delimiter $$
+create trigger tr_PrecioProductos_After_Insert
+after insert on DetalleCompra
+for each row 
+begin
+	declare total decimal(10,2);
+    declare cantidad int;
+    
+    set total = new.costoUnitario * new.cantidad;
+
+	update Productos
+	set precioUnitario = total * 0.40,
+		precioDocena  = total * 0.35 * 12,
+        precioMayor = total * 0.25
+    where Productos.codigoProducto = new.codigoProducto;
+    
+	update Productos
+        set Productos.existencia = Productos.existencia - new.cantidad
+	where Productos.codigoProducto = new.codigoProducto;
+
+end $$
+delimiter ;
+
+-- *********************************************Triger_After_ Insert de DetalleFactura con nombre TotalDocumento******************************************** 
+delimiter $$
+create trigger tr_TotalDocumento_After_Insert
+after insert on DetalleCompra
+for each row
+begin
+    declare total decimal(10,2);
+    
+    select sum(costoUnitario * cantidad) into total from DetalleCompra 
+    where numeroDocumento = NEW.numeroDocumento;
+    
+    update Compras 
+		set totalDocumento = total 
+	where numeroDocumento = NEW.numeroDocumento;
+end $$
+delimiter ;
+
+-- *********************************************Triger_After_ Insert de DetalleFactura con nombre PrecioUnitario******************************************** 
+delimiter $$
+create trigger tr_PrecioUnitario_After_Upd
+after insert on DetalleCompra
+for each row
+begin
+
+	declare precio decimal(10,2);
+    
+    set precio = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
+    
+    update DetalleFactura
+    set DetalleFactura.precioUnitario = precioP
+    where DetalleFactura.codigoProducto = NEW.codigoProducto;
+end $$
+delimiter ;
+
+-- *****************************************Triger_After_ Update de DetalleFactura con nombre TotalFactura******************************************************** 
+delimiter $$
+create trigger tr_TotalFactura_Aftr_U
+after update on DetalleFactura
+for each row
+begin
+	declare totalFactura decimal(10,2);
+    
+    select sum(precioUnitario * cantidad) into totalFactura from DetalleFactura
+    where numeroFactura = new.numeroFactura;
+    
+    update Factura
+		set Factura.totalFactura = totalFactura
+	where Factura.numeroFactura = new.numeroFactura;
+end $$
+delimiter ;
+
+ALTER USER '2020584_IN5BV'@'localhost' IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+set global time_zone = '-6:00';
