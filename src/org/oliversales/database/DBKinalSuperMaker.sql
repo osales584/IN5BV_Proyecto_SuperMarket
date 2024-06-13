@@ -1193,3 +1193,5 @@ delimiter ;
 
 ALTER USER '2020584_IN5BV'@'localhost' IDENTIFIED WITH mysql_native_password BY 'abc123!!';
 set global time_zone = '-6:00';
+
+
