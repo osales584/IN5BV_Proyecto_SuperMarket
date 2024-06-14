@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,11 +18,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.oliversales.bean.Producto;
 import org.oliversales.bean.Proveedores;
 import org.oliversales.bean.TipoDeProducto;
 import org.oliversales.db.Conexion;
+import org.oliversales.report.GenerarReportes;
 import org.oliversales.system.Principal;
  
 /**
@@ -225,6 +229,8 @@ public class MenuProductosController implements Initializable {
                 btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
                 btnReporte.setDisable(true);
+                imgAgregar.setImage(new Image("/org/oliversales/images/Agregar.png"));
+                imgEliminar.setImage(new Image("/org/oliversales/images/Eliminar.png"));         
                 tipoDeOperaciones = operaciones.ACTUALIZAR;
                 break;
             case ACTUALIZAR:
@@ -233,7 +239,9 @@ public class MenuProductosController implements Initializable {
                 btnAgregar.setText("Agregar");
                 btnEliminar.setText("Eliminar");
                 btnEditar.setDisable(false);
-                btnReporte.setDisable(false);        
+                btnReporte.setDisable(false);
+                imgAgregar.setImage(new Image("/org/oliversales/images/Agregar.png"));
+                imgEliminar.setImage(new Image("/org/oliversales/images/Eliminar.png"));         
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;                
         }
@@ -269,6 +277,31 @@ public class MenuProductosController implements Initializable {
          }
      
      }
+     
+    public void reportes() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+                break;
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(false);
+                btnReporte.setDisable(false);
+                imgAgregar.setImage(new Image("/org/oliversales/images/Agregar.png"));
+                imgEliminar.setImage(new Image("/org/oliversales/images/Eliminar.png"));         
+                tipoDeOperaciones = operaciones.NINGUNO;
+        }
+
+    }
+     
+    public void imprimirReporte() {
+        Map parametros = new HashMap();
+        parametros.put("codigoCliente", null);
+        GenerarReportes.mostrarReportes("ReporteProductos.jasper", "Reporte de Productos", parametros);
+    }
     
 // -----------------------------------------------------------------------------    
     public void desactivarControles(){

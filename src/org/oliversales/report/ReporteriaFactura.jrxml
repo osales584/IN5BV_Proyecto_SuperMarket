@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteriaFactura" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="48e12e12-824a-4436-b546-1d620e49443d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="103" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="118" height="103" uuid="5b3f7947-e0fc-4f58-b639-fb5f4322ed16"/>
+				<imageExpression><![CDATA["C:\\Users\\olive\\Desktop\\Repositorio Casa\\IN5BV_Proyecto_SuperMarket\\src\\org\\oliversales\\images\\LogoMegaMarket (1).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="407" y="0" width="148" height="30" uuid="b97a2d26-2fd4-4f42-a94e-233f25ecc03d"/>
+				<textElement>
+					<font fontName="Algerian" size="20"/>
+				</textElement>
+				<text><![CDATA[MEGAMARKET]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

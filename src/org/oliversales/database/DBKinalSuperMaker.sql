@@ -163,6 +163,8 @@ Delimiter ;
 call sp_AgregarClientes(01, '11123344', 'Harol', 'Luna', 'San Raymundo', '4355766', 'harolyLuna@gmail.com');
 call sp_AgregarClientes(08, '45472378', 'Oliver', 'Donis', 'Amatitlan', '98785675', 'oliveryDonis@gmail.com');
 call sp_AgregarClientes(20, '12123020', 'Saul', 'Alberto', 'Casa', '25150641', 'saulyalberto@gmail.com');
+call sp_AgregarClientes(22, '98655689', 'Luna', 'Rodriguez', 'zona 14', '62826391', 'lunarodriguez@gmail.com');
+call sp_AgregarClientes(15, '81537934', 'Alberto', 'Xiloj', 'Petapa', '18764123', 'albertoxiloj@gmail.com');
 
 -- **********************************************************Listar Clientes*********************************************************************
 Delimiter $$
@@ -564,6 +566,10 @@ call sp_AgregarProductos('120','El filete de res Wagyu PrimeCut
 ', 15.99, 13.99, 12.99,'', 15, 2,00020);
 call sp_AgregarProductos('122','El filete de res Wagyu PrimeCut 
 ', 12.99, 15.99, 20.99,'', 15, 2,00020);
+call sp_AgregarProductos('50','Papel higiénico suave 
+', 8.99, 10.99, 13.99,'', 10, 2,00020);
+call sp_AgregarProductos('25','Pan integral 
+', 10.99, 13.99, 15.99,'', 5, 1,00010);
 -- *********************************************************Listar Producto***********************************************************************
 -- drop procedure sp_EliminarProductos;
 Delimiter $$
@@ -1194,4 +1200,10 @@ delimiter ;
 ALTER USER '2020584_IN5BV'@'localhost' IDENTIFIED WITH mysql_native_password BY 'abc123!!';
 set global time_zone = '-6:00';
 
-
+-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+-- JOIN
+select * from Detallefactura
+	join Factura on Detallefactura.codigoDetalleFactura = Factura.numeroFactura
+    join Clientes on Factura.NITCliente = Clientes.NITCliente
+    join Productos on Detallefactura.codigoProducto = Productos.codigoProducto
+    where Factura.numeroFactura = 3; 
