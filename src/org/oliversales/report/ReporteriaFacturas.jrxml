@@ -1,0 +1,204 @@
+    <?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteriaFacturas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e3175c9-5aa8-44d0-b9d5-a7393092b385">
+	<property name="ireport.zoom" value="0.8264462809917359"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from detalleFactura df
+join Factura f on df.numeroFactura = f.numeroFactura
+join clientes c on f.codigoCliente = c.codigoCliente
+join productos p on df.codigoProducto = p.codigoProducto
+where f.numeroFactura = 3;]]>
+	</queryString>
+	<field name="codigoDetalleFactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioUnitario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroFactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalFactura" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaFactura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoEmpleado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NITCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccionCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcionProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioDocena" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioMayor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imagenProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="existencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoProveedor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoTipoProducto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="108" height="79" uuid="53821a5b-0b4c-42bd-9866-dee24f06ce73"/>
+				<imageExpression><![CDATA["C:\\Users\\olive\\Desktop\\Repositorio Casa\\IN5BV_Proyecto_SuperMarket\\src\\org\\oliversales\\images\\LogoMegaMarket (1).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="405" y="0" width="150" height="30" uuid="4f1db4ad-2ab2-42fe-ac60-c7827e8c25f4"/>
+				<textElement>
+					<font fontName="Algerian" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEGAMARKET]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="0" width="275" height="39" uuid="d5368385-1193-49f9-82cd-863e62715f56"/>
+				<textElement>
+					<font fontName="Arial Black" size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Factura NO: " +$F{numeroFactura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="421" height="20" uuid="18515738-12e3-4853-8076-c92994ffc418"/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nombre y Apellido: " + $F{nombreCliente} + " " +$F{apellidoCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="132" height="20" uuid="0a36b75d-183a-4561-8902-a3c2dca1d28f"/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Direccion: " + $F{direccionCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="100" height="20" uuid="6fee8a8e-ea5f-4362-b06c-c8ddcf0a5aa3"/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NIT: " + $F{NITCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="20" width="223" height="20" uuid="ad2644ed-eb30-43b6-9ae6-3711ef7642d5"/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Telefono: " + $F{telefonoCliente}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="55" width="354" height="1" uuid="601a296a-65be-4887-806f-7c14c8304db4"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="124" y="29" width="100" height="20" uuid="1b4e7fc3-2a40-42be-a70d-be4c8d9274c7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="29" width="100" height="20" uuid="f34ffeb6-4f5d-4625-b245-ba25c93acae1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="29" width="120" height="20" uuid="ea4e1b96-7b73-4035-b608-3d04846265cd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Precio por Unidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="124" y="24" width="168" height="20" uuid="93ac8d35-98bd-45f6-813e-4a009a8f0025"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcionProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="24" width="100" height="20" uuid="952109b1-c76f-4c1e-9d62-e913760bd19d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="24" width="100" height="20" uuid="88b4a55b-a423-47c5-a39d-bdbfa6116936"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioUnitario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

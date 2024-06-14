@@ -1202,8 +1202,8 @@ set global time_zone = '-6:00';
 
 -- ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 -- JOIN
-select * from Detallefactura
-	join Factura on Detallefactura.codigoDetalleFactura = Factura.numeroFactura
-    join Clientes on Factura.NITCliente = Clientes.NITCliente
-    join Productos on Detallefactura.codigoProducto = Productos.codigoProducto
-    where Factura.numeroFactura = 3; 
+select * from detalleFactura df
+join Factura f on df.numeroFactura = f.numeroFactura
+join clientes c on f.codigoCliente = c.codigoCliente
+join productos p on df.codigoProducto = p.codigoProducto
+where f.numeroFactura = 3;

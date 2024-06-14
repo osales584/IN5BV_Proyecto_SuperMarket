@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -50,7 +51,7 @@
                   <String fx:value="button3" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="143.0" stylesheets="@../resource/KinalExpresCSS.css" text="Reporte" GridPane.rowIndex="3">
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="39.0" prefWidth="143.0" stylesheets="@../resource/KinalExpresCSS.css" text="Reporte" GridPane.rowIndex="3">
                <styleClass>
                   <String fx:value="button2" />
                   <String fx:value="button3" />
@@ -113,17 +114,18 @@
         </rowConstraints>
          <children>
             <Label text="numeroFactura" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="txtNumFact" GridPane.columnIndex="1" />
             <Label text="estado" GridPane.columnIndex="2" />
             <Label text="totalFactura" GridPane.rowIndex="1" />
             <Label text="fechaFactura" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label text="codigoCliente" GridPane.rowIndex="2" />
             <Label text="codigoEmpleado" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="3" />
+            <TextField fx:id="txtTotalF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtEstado" GridPane.columnIndex="3" />
             <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbCodClien" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbCodProv" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dpFechaF" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <ImageView fitHeight="76.0" fitWidth="81.0" layoutX="348.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
@@ -136,14 +138,14 @@
             <Image url="@../images/Factura.png" />
          </image>
       </ImageView>
-      <TableView layoutX="19.0" layoutY="248.0" prefHeight="185.0" prefWidth="724.0" stylesheets="@../resource/KinalExpresCSS.css">
+      <TableView fx:id="tblFactura" layoutX="19.0" layoutY="248.0" prefHeight="185.0" prefWidth="724.0" stylesheets="@../resource/KinalExpresCSS.css">
         <columns>
-          <TableColumn minWidth="120.0" prefWidth="75.0" text="numeroFactura" />
-          <TableColumn minWidth="120.0" prefWidth="75.0" text="estado" />
-            <TableColumn minWidth="120.0" prefWidth="75.0" text="totalFactura" />
-            <TableColumn minWidth="120.0" prefWidth="75.0" text="fechaFactura" />
-            <TableColumn minWidth="120.0" prefWidth="75.0" text="codigoCliente" />
-            <TableColumn minWidth="120.0" prefWidth="75.0" text="codigoEmpleado" />
+          <TableColumn fx:id="colNumFact" minWidth="120.0" prefWidth="75.0" text="numeroFactura" />
+          <TableColumn fx:id="colEstado" minWidth="120.0" prefWidth="75.0" text="estado" />
+            <TableColumn fx:id="colTotalF" minWidth="120.0" prefWidth="75.0" text="totalFactura" />
+            <TableColumn fx:id="colFechaF" minWidth="120.0" prefWidth="75.0" text="fechaFactura" />
+            <TableColumn fx:id="colCodClien" minWidth="120.0" prefWidth="75.0" text="codigoCliente" />
+            <TableColumn fx:id="colCodEmp" minWidth="120.0" prefWidth="75.0" text="codigoEmpleado" />
         </columns>
       </TableView>
    </children>

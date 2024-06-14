@@ -1,18 +1,20 @@
 
 package org.oliversales.bean;
 
+import java.sql.Date;
+
 public class Factura {
     private int numeroFactura;
     private String estado;
     private double totalFactura;
-    private String fechaFactura;
+    private Date fechaFactura;
     private int codigoCliente;
     private int codigoEmpleado;
 
     public Factura() {
     }
 
-    public Factura(int numeroFactura, String estado, double totalFactura, String fechaFactura, int codigoCliente, int codigoEmpleado) {
+    public Factura(int numeroFactura, String estado, double totalFactura, Date fechaFactura, int codigoCliente, int codigoEmpleado) {
         this.numeroFactura = numeroFactura;
         this.estado = estado;
         this.totalFactura = totalFactura;
@@ -45,11 +47,11 @@ public class Factura {
         this.totalFactura = totalFactura;
     }
 
-    public String getFechaFactura() {
+    public Date getFechaFactura() {
         return fechaFactura;
     }
 
-    public void setFechaFactura(String fechaFactura) {
+    public void setFechaFactura(Date fechaFactura) {
         this.fechaFactura = fechaFactura;
     }
 
